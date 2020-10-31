@@ -1,22 +1,22 @@
-min,max,costume,evilCharacter,location,treasure,task
-1,6,Pirate,the evil Davy Jones,sea,golden treasure chest,scrubbing the deck
-1,6,Zombie,the zombie hunter,an abandoned factory,brains,mindlessly wonder
-1,6,Lion,the lion hunter,the pride lands,lion cub,eating
-1,6,Dinosaur,the meteor,a volcano,food,eating
-1,6,Dog,the dog catcher,the dumpster,bone,eating
-1,3,Nurse,the psycho patient,the abandoned hospital,pay slip,drawing blood
-1,1,Cupid,the devil,heaven,love arrow,making couples
-1,6,Munchkin,the wicked witch of the west,the Emerald City,red slippers,were dancing 
-1,1,Devil,the angel,hell,secrets,was causing chaos 
-1,6,Oompa-Loompa,Willy Wonka,the chocolate factory,chocolate recipe,dancing 
-3,3,3 Little Pigs,the big bad wolf,the barn,house,building a house 
-4,4,3 Little Pigs + Wolf,the big bad wold,the barn,house,building a house 
-1,6,Snow White and Dwarves,the evil witch,the little cottage,youth,cleaning 
-1,3,Finding Nemo,the fish catchers,the ocean,the fish,swimming 
-1,6,Ghostbusters,the ghost,New York City,monster hunting gear,hunting down ghosts 
-1,6,Charlie and the Chocolate Factory,Willy Wonka,the chocolate factory,sense of youth,touring a factory 
-1,6,Gru and Minions,Victor,the moon,achievements,being despicable 
-1,6,Goldilocks and the Three Bears,Goldilocks,the little cottage,the porridge,eating porridge 
-1,2,Little Red Riding Hood and the Wolf,the big bad wolf,the forrest,to eat,was picking berries 
-2,2,UFO and Alien,the alien,space,the brain,building a UFO
-2,2,Thing 1 and Thing 2,the cat in the hat,the real world,a sibling,causing chaos 
+data.name0min,max,costume,evilCharacter,location,treasure,task,images
+1,6,Pirate,the evil Davy Jones,sea,golden treasure chest,scrubbing the deck,pirate.png
+1,6,Zombie,the zombie hunter,an abandoned factory,brains,mindlessly wonder,zombie.png
+1,6,Lion,the lion hunter,the pride lands,lion cub,eating,lion.png
+1,6,Dinosaur,the meteor,a volcano,food,eating,dinosaur.png
+1,6,Dog,the dog catcher,the dumpster,bone,eating,dog.png
+1,3,Nurse,the psycho patient,the abandoned hospital,pay slip,drawing blood,nurse.png
+1,1,Cupid,the devil,heaven,love arrow,making couples,cupid.png
+1,6,Munchkin,the wicked witch of the west,the Emerald City,red slippers,were dancing ,munchkin.png
+1,1,Devil,the angel,hell,secrets,was causing chaos ,devil.png
+1,6,Oompa-Loompa,Willy Wonka,the chocolate factory,chocolate recipe,dancing ,oo.png
+3,3,3 Little Pigs,the big bad wolf,the barn,house,building a house ,threeLittlePigs.png
+4,4,3 Little Pigs + Wolf,the big bad wold,the barn,house,building a house ,pigsWolf.png
+1,6,Snow White and Dwarves,the evil witch,the little cottage,youth,cleaning ,snowwhite.png
+1,3,Finding Nemo,the fish catchers,the ocean,the fish,swimming ,findingNemo.png
+1,6,Ghostbusters,the ghost,New York City,monster hunting gear,hunting down ghosts ,ghostBuster.png
+1,6,Charlie and the Chocolate Factory,Willy Wonka,the chocolate factory,sense of youth,touring a factory ,charlie.png
+1,6,Gru and Minions,Victor,the moon,achievements,being despicable ,gru.png
+1,6,Goldilocks and the Three Bears,Goldilocks,the little cottage,the porridge,eating porridge ,gThreeBears.png
+1,2,Little Red Riding Hood and the Wolf,the big bad wolf,the forrest,to eat,was picking berries ,littleRed.png
+2,2,UFO and Alien,the alien,space,the brain,building a UFO,alien.png
+2,2,Thing 1 and Thing 2,the cat in the hat,the real world,a sibling,causing chaos ,things.png
