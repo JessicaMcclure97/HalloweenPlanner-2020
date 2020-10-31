@@ -56,9 +56,12 @@ function generateCostume(groupSize) {
 
 function generatePlan(data) {
     const plan = new Map();
-    var story =randomStoryGenerator(data.peopleCount, data.name0, data.name1);
 
-    plan.set("costume", generateCostume())
+    let costume = generateCostume(data.get("peopleCount"));
+    plan.set("costume", costume["costume"]);
+
+    let story = randomStoryGenerator(data.get("peopleCount"), data.get("name0"), data.get("name1"), costume);
+    plan.set("story", story);
 
     return plan;
 }
@@ -91,10 +94,10 @@ function processForm(chunk, res){
 
         //validating fields
         valid = formValidation(info[0], info[1]);
-        if(!valid){
-           break;
-        }else{
+        if (valid) {
             formInputs.set(info[0], info[1]);
+        } else {
+            break;
         }
     }
 
@@ -166,12 +169,12 @@ function writeJSON(res, data){
 
 ///////////Create Story//////////////////
 function randomStoryGenerator(peopleCount, randomName, randomName2, costume){
-    var costumeDescription = costume.costume;
-    var evilCharacter = costume.evilCharacter;
+    var costumeDescription = costume["costume"];
+    var evilCharacter = costume["evilCharacter"];
 
-    var treasure = costume.treasure;
-    var task = costume.task;
-    var location = costume.location;
+    var treasure = costume["treasure"];
+    var task = costume["task"];
+    var location = costume["location"];
 
 
     var story = "Once upon a time there were" + peopleCount + costumeDescription + ". One day they decided to go to "
@@ -183,6 +186,8 @@ function randomStoryGenerator(peopleCount, randomName, randomName2, costume){
         " decided to have a meeting. They decided to bombard " +randomName+" with questions. "+randomName2 +" was " +
         "convinced this wasn't really  " + randomName + " and so they decided to kill + " + randomName + "! After they " +
     "decided to look around the "+ location + ". In the back they found the real " + randomName + "! All was well after" +
-    " wards as they defeated they " +evilCharacter + " and they lived  happily ever after!"
+    " wards as they defeated they " +evilCharacter + " and they lived  happily ever after!";
+
+    return story;
 }
 
