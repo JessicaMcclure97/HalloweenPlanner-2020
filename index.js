@@ -1,24 +1,33 @@
 const fs = require('fs');
 
 const express = require('express');
-const session = require('express-session');
 
 const app = express();
 const port = 8080;
 
-app.use(session({secret:'0b1f608ad333a1911f6851e2c2a183496739fecc36cffe347d4f1c563319c8d0f0d1bac720267863b4e0f9ab928a1ecd40e7d93aeaf65d5e79479b3278b9894b'}));
-let ssn;
+////////////// Import Data CSVs //////////////
 
-app.post('/api/login', async function (req,res) {
-    ssn=req.session;
+const costumes = [];
+fs.readFile('data/costumes.csv', (err, data) => {
+    if (err) throw err;
+    data = data.toString();
+    data = data.split("\r\n")
+    // remove first line - titles
+    data.shift();
 
-    if (!ssn.name) {
-        ssn.name = "banana";
-        res.send("Logged out.");
-    } else {
-        res.send("Logged in with ID " + ssn.name);
-    }
+    data.forEach((item) => {
+        item = item.split(",");
+
+        costumes.push({
+            min: item[0],
+            max: item[1],
+            costume: item[2]
+        });
+    });
 });
+
+////////////// Planning API //////////////
+
 app.post('/HalloweenPlanner-2020/api/plan', function (req,res) {
     let html = "good"; //validation
 
