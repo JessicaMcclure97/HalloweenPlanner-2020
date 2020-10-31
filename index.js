@@ -55,13 +55,13 @@ function generateCostume(groupSize) {
 ////////////// Planning API //////////////
 
 function generatePlan(data) {
-    const plan = new Map();
+    const plan = {};
 
     let costume = generateCostume(data.get("peopleCount"));
-    plan.set("costume", costume["costume"]);
+    plan.costume = costume["costume"];
 
     let story = randomStoryGenerator(data.get("peopleCount"), data.get("name0"), data.get("name1"), costume);
-    plan.set("story", story);
+    plan.story = story;
 
     return plan;
 }
@@ -156,15 +156,7 @@ function formValidation(key, value){
 }
 
 function writeJSON(res, data){
-    var obj = "{";
-    for (const [key, value] of data.entries()) {
-       obj += "" +key+ ":" + value+",";
-    }
-    obj += "}";
-
-    let jsonData = JSON.stringify(obj);
-    console.log(jsonData);
-    res.json(jsonData);
+    res.json(JSON.stringify(data));
 }
 
 ///////////Create Story//////////////////
