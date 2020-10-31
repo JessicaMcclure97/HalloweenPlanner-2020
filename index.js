@@ -1,31 +1,40 @@
 const fs = require('fs');
-
 const express = require('express');
-const session = require('express-session');
 
 const app = express();
 const port = 8080;
 
 ////////////// Import Data CSVs //////////////
 
-const costumes = [];
-fs.readFile('data/costumes.csv', (err, data) => {
-    if (err) throw err;
-    data = data.toString();
-    data = data.split("\r\n")
-    // remove first line - titles
-    data.shift();
+function csvFileToObjectArray(path) {
+    const array = [];
 
-    data.forEach((item) => {
-        item = item.split(",");
+    fs.readFile(path, function (err, data) {
+        if (err) throw err;
 
-        costumes.push({
-            min: item[0],
-            max: item[1],
-            costume: item[2]
+        data = data.toString();
+        data = data.split("\r\n")
+
+        // first row of file is headers - get header lines and then remove from array
+        const headers = data[0].split(",");
+        data.shift();
+
+        data.forEach(function (item) {
+            item = item.split(",");
+
+            const object = {};
+            for (let j = 0; j < headers.length; j++) {
+                object[headers[j]] = item[j];
+            }
+
+            array.push(object);
         });
     });
-});
+
+    return array;
+}
+
+const costumes = csvFileToObjectArray("data/costumes.csv");
 
 ////////////// Planning API //////////////
 
