@@ -54,6 +54,12 @@ function generateCostume(groupSize) {
 
 ////////////// Planning API //////////////
 
+function generatePlan(data) {
+    const plan = new Map();
+
+    plan.push("costume", generateCostume())
+}
+
 app.post('/api/plan', function (req,res) {
     let formInputs = new Map();
     let html = "good"; //validation
@@ -68,7 +74,7 @@ app.post('/api/plan', function (req,res) {
     req.on('end', () => {
         console.log('End of Data - sending reply');
         if (html === "good"){
-            writeJSON(res, formInputs);
+            writeJSON(res, generatePlan(form));
             res.end();
         }else{
             console.log("Unsuccessful Form");
@@ -156,16 +162,16 @@ function formValidation(key, value){
     return true;
 }
 
-function writeJSON(res, formInputs){
+function writeJSON(res, data){
     var obj = "{";
-    for (const [key, value] of formInputs.entries()) {
+    for (const [key, value] of data.entries()) {
        obj += "" +key+ ":" + value+",";
     }
     obj += "}";
 
-    let data = JSON.stringify(obj);
-    console.log(data);
-    res.json(data);
+    let jsonData = JSON.stringify(obj);
+    console.log(jsonData);
+    res.json(jsonData);
 }
 
 ///////////Create Story//////////////////
