@@ -4,6 +4,8 @@ const express = require('express');
 const app = express();
 const port = 8080;
 
+let data;
+
 ////////////// Import Data CSVs //////////////
 
 function csvFileToObjectArray(path) {
@@ -149,8 +151,34 @@ function writeJSON(res){
     }
     obj += "}";
 
-    let data = JSON.stringify(obj);
+    data = JSON.stringify(obj);
     console.log(data);
     res.json(data);
+}
+
+///////////Create Story//////////////////
+function randomStoryGenerator(){
+
+    var peopleCount;
+    var costumeDescription;
+    var evilCharacter;
+    var randomName;
+    var randomName2;
+    var treasure;
+    var task;
+    var location;
+
+
+
+    var story = "Once upon a time there were" + peopleCount + costumeDescription + ". One day they decided to go to "
+        + location + ". They thought they were all alone, however "+ evilCharacter +" was looking in. " + evilCharacter +
+        " wanted the " + costumeDescription + "'s " + treasure + ". " + evilCharacter + " decided to pose as one of the "
+        + costumeDescription + " by kidnapping "+ randomName +"! The other " + costumeDescription + " didn't notice the" +
+        " change at all. They started " + task + " at the " + location + " and it was there they noticed how "+
+        randomName +" couldn't do anything at all. " + randomName2 + " grew suspicious. The " + costumeDescription +
+        " decided to have a meeting. They decided to bombard " +randomName+" with questions. "+randomName2 +" was " +
+        "convinced this wasn't really  " + randomName + " and so they decided to kill + " + randomName + "! After they " +
+    "decided to look around the "+ location + ". In the back they found the real " + randomName + "! All was well after" +
+    " wards as they defeated they " +evilCharacter + " and they lived  happily ever after!"
 }
 
