@@ -59,6 +59,7 @@ function generatePlan(data) {
 
     let costume = generateCostume(data.get("peopleCount"));
     plan.costume = costume["costume"];
+    plan.costumeImg = "/assets/" + costume["images"];
 
     let story = randomStoryGenerator(data.get("peopleCount"), data.get("name0"), data.get("name1"), costume);
     plan.story = story;
