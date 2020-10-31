@@ -4,7 +4,6 @@ const express = require('express');
 const app = express();
 const port = 8080;
 
-let data;
 
 ////////////// Import Data CSVs //////////////
 
@@ -56,6 +55,7 @@ function generateCostume(groupSize) {
 ////////////// Planning API //////////////
 
 app.post('/api/plan', function (req,res) {
+    let formInputs = new Map();
     let html = "good"; //validation
 
     console.log('post: ' + req.url);
@@ -68,7 +68,7 @@ app.post('/api/plan', function (req,res) {
     req.on('end', () => {
         console.log('End of Data - sending reply');
         if (html === "good"){
-            writeJSON(res);
+            writeJSON(res, formInputs);
             res.end();
         }else{
             console.log("Unsuccessful Form");
@@ -87,8 +87,6 @@ app.listen(port, () => {
 })
 //////////////FORM/////////////////////
 
-let formInputs = new Map();
-
 //validating form
 function processForm(chunk, res){
     var objects = chunk.split("&");
@@ -102,7 +100,6 @@ function processForm(chunk, res){
         //validating fields
         valid = formValidation(info[0], info[1]);
         if(!valid){
-            console.log(info[0]);
            break;
         }else{
             formInputs.set(info[0], info[1]);
@@ -159,29 +156,29 @@ function formValidation(key, value){
     return true;
 }
 
-function writeJSON(res){
+function writeJSON(res, formInputs){
     var obj = "{";
     for (const [key, value] of formInputs.entries()) {
        obj += "" +key+ ":" + value+",";
     }
     obj += "}";
 
-    data = JSON.stringify(obj);
+    let data = JSON.stringify(obj);
     console.log(data);
     res.json(data);
 }
 
 ///////////Create Story//////////////////
-function randomStoryGenerator(){
+function randomStoryGenerator(costume){
 
-    var peopleCount;
-    var costumeDescription;
-    var evilCharacter;
+    var peopleCount = peopleCount;
+    var costumeDescription = costume.costume;
+    var evilCharacter = costume.evilCharacter;
     var randomName;
     var randomName2;
-    var treasure;
-    var task;
-    var location;
+    var treasure = costume.treasure;
+    var task = costume.task;
+    var location = costume.location;
 
 
 
