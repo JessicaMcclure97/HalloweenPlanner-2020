@@ -59,6 +59,7 @@ function generatePlan(data) {
 
     let costume = generateCostume(data.get("peopleCount"));
     plan.costume = costume["costume"];
+    plan.costumeImg = "/assets/" + costume["images"];
 
     let story = randomStoryGenerator(data.get("peopleCount"), data.get("name0"), data.get("name1"), costume);
     plan.story = story;
@@ -87,6 +88,8 @@ function processForm(chunk, res){
     let objects = chunk.split("&");
     let valid = true;
     let formInputs = new Map();
+    peopleCount = 0;
+    noNames = 0;
 
     for(let i = 0; i < objects.length; i++){ //-1 since submit button will always be there
         let info = objects[i].split("=");

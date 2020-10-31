@@ -30,6 +30,25 @@ peopleCount.addEventListener("input", function () {
     }
 });
 
+function submitForm() {
+    $.ajax({
+        type: "POST",
+        url: "api/plan",
+        data: $("#form").serialize(), // serializes the form's elements.
+        success: function(data) {
+            $("#formSection").slideUp();
+
+            data = JSON.parse(data);
+
+            document.getElementById("costumeImg").setAttribute("src", data.costumeImg);
+            document.getElementById("costumeText").innerText = "Your costume should be " + data.costume;
+            document.getElementById("storyBlock").innerText = data.story;
+
+            $("#plan").slideDown();
+        }
+    });
+}
+
 const form = document.getElementById("form");
 form.addEventListener("submit", function (event) {
     event.preventDefault();
@@ -49,18 +68,11 @@ form.addEventListener("submit", function (event) {
                 document.getElementById("name5").value = "";
         }
 
-        // submit the form
-        $.ajax({
-            type: "POST",
-            url: "api/plan",
-            data: $("#form").serialize(), // serializes the form's elements.
-            success: function(data)
-            {
-                alert(data); // show response from the php script.
-            }
-        });
+        submitForm();
     }
 });
+
+document.getElementById("regenerate").addEventListener("click", submitForm);
 
 // Initialise timepicker interface
 $('.timepicker').timepicker({
