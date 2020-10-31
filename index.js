@@ -87,6 +87,8 @@ function processForm(chunk, res){
     let objects = chunk.split("&");
     let valid = true;
     let formInputs = new Map();
+    peopleCount = 0;
+    noNames = 0;
 
     for(let i = 0; i < objects.length; i++){ //-1 since submit button will always be there
         let info = objects[i].split("=");
