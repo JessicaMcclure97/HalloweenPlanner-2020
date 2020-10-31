@@ -35,7 +35,10 @@ app.post('/api/plan', function (req,res) {
             writeJSON(res);
             res.end();
         }else{
+            console.log("Unsuccessful Form");
             //unsuccessful validation
+            res.writeHead(200, {'Content-Type': 'text/html'});
+            res.write(String(html));
             res.end();
         }
     })
@@ -54,18 +57,70 @@ let formInputs = new Map();
 function processForm(chunk, res){
     var objects = chunk.split("&");
 
-    for(var i = 0; i < objects.length-1; i++){ //-1 since submit button will always be there
+    var valid = true;
+
+    for(var i = 0; i < objects.length; i++){ //-1 since submit button will always be there
         var info = objects[i].split("=");
         info[1] = info[1].replace(/[+]/g, ' ');
+
         //validating fields
-        if(false){ //form validation later - !formValidation(info[0], info[1])
-            return "<script>alert(\"Cannot Process form. Please press the " +
-                "back button to return to the order form.\");</script>";
+        valid = formValidation(info[0], info[1]);
+        if(!valid){
+            console.log(info[0]);
+           break;
         }else{
             formInputs.set(info[0], info[1]);
         }
     }
-    return "good";
+
+    if(peopleCount != noNames) valid = false;
+    if(!valid){
+        return "<script>alert(\"Cannot Process form. Please press the " +
+            "back button to return to the order form.\");</script>";
+    }else{
+        return "good";
+    }
+}
+
+let peopleCount;
+let noNames = 0;
+
+function formValidation(key, value){
+    switch (key){
+        case "peopleCount":
+            value = parseInt(value);
+            if(value < 1 || value > 6){
+                return false;
+            } else {
+                peopleCount = value;
+            }
+            break;
+        case "startTime":
+            if(!value.match(/[0-2][0-9]%3A[0-5][0-9]/)){
+                return false;
+            }
+            break;
+        case "endTime":
+            if(!value.match(/[0-2][0-9]%3A[0-5][0-9]/)) return false;
+            break;
+        case "drinkingGames":
+            break;
+        case "familyFriendly":
+            break;
+        default:
+            if(!value.match(/[a-zA-Z0-9A-zÀ-ÖØ-öø-įĴ-őŔ-žǍ-ǰǴ-ǵǸ-țȞ-ȟȤ-ȳɃɆ-ɏḀ-ẞƀ-ƓƗ-ƚƝ-ơƤ-ƥƫ-ưƲ-ƶẠ-ỿ0-9.()\s-]+/)){
+                if(value == ""){
+                    //do nothing
+                }else{
+                    return false;
+                }
+            } else {
+                noNames ++;
+            }
+            break;
+    }
+
+    return true;
 }
 
 function writeJSON(res){
