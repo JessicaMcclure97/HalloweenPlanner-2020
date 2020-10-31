@@ -14,7 +14,7 @@
 <div class="container">
   <div id="formSection">
     <h1>Make your plan</h1>
-    <form action="api/plan" method="post" id="form">
+    <form action="/api/plan" method="post" id="form">
       <div class="form-group">
         <label for="peopleCount">How many people are in your party?</label>
         <input type="number" class="form-control" id="peopleCount" name="peopleCount" aria-describedby="emailHelp" min="1" max="6" maxlength="1" value="6" required pattern="[1-6]{1}">
@@ -59,7 +59,7 @@
     </form>
   </div>
 
-  <div id="plan">
+  <div id="plan" style="display: none;">
     <h1>Your Halloween</h1>
     <h2>Costume</h2>
     <h2>Plan</h2>
