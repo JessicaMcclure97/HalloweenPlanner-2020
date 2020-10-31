@@ -16,24 +16,24 @@
   <form action="api/plan" method="post">
     <div class="form-group">
       <label for="peopleCount">How many people are in your party?</label>
-      <input type="number" class="form-control" id="peopleCount" name="peopleCount" aria-describedby="emailHelp" min="1" max="6" maxlength="1" value="1">
+      <input type="number" class="form-control" id="peopleCount" name="peopleCount" aria-describedby="emailHelp" min="1" max="6" maxlength="1" value="6" required pattern="[1-6]{1}">
     </div>
     <div class="form-group">
       <label>Enter everyone's names.</label>
-      <input type="text" class="form-control name-input" id="name0" name="name0" aria-label="Person 1's name">
-      <input type="text" class="form-control name-input" id="name1" name="name1" aria-label="Person 2's name">
-      <input type="text" class="form-control name-input" id="name2" name="name2" aria-label="Person 3's name">
-      <input type="text" class="form-control name-input" id="name3" name="name3" aria-label="Person 4's name">
-      <input type="text" class="form-control name-input" id="name4" name="name4" aria-label="Person 5's name">
-      <input type="text" class="form-control name-input" id="name5" name="name5" aria-label="Person 6's name">
+      <input type="text" class="form-control name-input" id="name0" name="name0" aria-label="Person 1's name" maxlength="30" pattern="^[a-zA-Z0-9A-zÀ-ÖØ-öø-įĴ-őŔ-žǍ-ǰǴ-ǵǸ-țȞ-ȟȤ-ȳɃɆ-ɏḀ-ẞƀ-ƓƗ-ƚƝ-ơƤ-ƥƫ-ưƲ-ƶẠ-ỿ0-9.()\s-]$" required>
+      <input type="text" class="form-control name-input" id="name1" name="name1" aria-label="Person 2's name" maxlength="30" pattern="^[a-zA-Z0-9A-zÀ-ÖØ-öø-įĴ-őŔ-žǍ-ǰǴ-ǵǸ-țȞ-ȟȤ-ȳɃɆ-ɏḀ-ẞƀ-ƓƗ-ƚƝ-ơƤ-ƥƫ-ưƲ-ƶẠ-ỿ0-9.()\s-]$" required>
+      <input type="text" class="form-control name-input" id="name2" name="name2" aria-label="Person 3's name" maxlength="30" pattern="^[a-zA-Z0-9A-zÀ-ÖØ-öø-įĴ-őŔ-žǍ-ǰǴ-ǵǸ-țȞ-ȟȤ-ȳɃɆ-ɏḀ-ẞƀ-ƓƗ-ƚƝ-ơƤ-ƥƫ-ưƲ-ƶẠ-ỿ0-9.()\s-]$" required>
+      <input type="text" class="form-control name-input" id="name3" name="name3" aria-label="Person 4's name" maxlength="30" pattern="^[a-zA-Z0-9A-zÀ-ÖØ-öø-įĴ-őŔ-žǍ-ǰǴ-ǵǸ-țȞ-ȟȤ-ȳɃɆ-ɏḀ-ẞƀ-ƓƗ-ƚƝ-ơƤ-ƥƫ-ưƲ-ƶẠ-ỿ0-9.()\s-]$" required>
+      <input type="text" class="form-control name-input" id="name4" name="name4" aria-label="Person 5's name" maxlength="30" pattern="^[a-zA-Z0-9A-zÀ-ÖØ-öø-įĴ-őŔ-žǍ-ǰǴ-ǵǸ-țȞ-ȟȤ-ȳɃɆ-ɏḀ-ẞƀ-ƓƗ-ƚƝ-ơƤ-ƥƫ-ưƲ-ƶẠ-ỿ0-9.()\s-]$" required>
+      <input type="text" class="form-control name-input" id="name5" name="name5" aria-label="Person 6's name" maxlength="30" pattern="^[a-zA-Z0-9A-zÀ-ÖØ-öø-įĴ-őŔ-žǍ-ǰǴ-ǵǸ-țȞ-ȟȤ-ȳɃɆ-ɏḀ-ẞƀ-ƓƗ-ƚƝ-ơƤ-ƥƫ-ưƲ-ƶẠ-ỿ0-9.()\s-]$" required>
     </div>
     <div class="form-group">
       <label for="startTime">When does your party start?</label>
-      <input type="text" class="form-control timepicker" id="startTime" name="startTime">
+      <input type="text" class="form-control timepicker" id="startTime" name="startTime" required pattern="[0-2][0-9]:[0-5][0-9]">
     </div>
     <div class="form-group">
       <label for="endTime">When will your party end?</label>
-      <input type="text" class="form-control timepicker" id="endTime" name="endTime">
+      <input type="text" class="form-control timepicker" id="endTime" name="endTime" required pattern="[0-2][0-9]:[0-5][0-9]">
     </div>
     <div class="form-check">
       <input class="form-check-input" type="checkbox" value="" id="familyFriendly" name="familyFriendly" aria-describedby="familyFriendlyHelp">
