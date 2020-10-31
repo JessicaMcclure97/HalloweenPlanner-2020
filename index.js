@@ -56,6 +56,7 @@ function generateCostume(groupSize) {
 
 function generatePlan(data) {
     const plan = new Map();
+    var story =randomStoryGenerator(data.peopleCount, data.name0, data.name1);
 
     plan.set("costume", generateCostume())
 
@@ -164,17 +165,13 @@ function writeJSON(res, data){
 }
 
 ///////////Create Story//////////////////
-function randomStoryGenerator(costume){
-
-    var peopleCount = peopleCount;
+function randomStoryGenerator(peopleCount, randomName, randomName2, costume){
     var costumeDescription = costume.costume;
     var evilCharacter = costume.evilCharacter;
-    var randomName;
-    var randomName2;
+
     var treasure = costume.treasure;
     var task = costume.task;
     var location = costume.location;
-
 
 
     var story = "Once upon a time there were" + peopleCount + costumeDescription + ". One day they decided to go to "
