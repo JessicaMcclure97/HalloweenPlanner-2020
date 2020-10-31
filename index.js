@@ -38,6 +38,21 @@ function csvFileToObjectArray(path) {
 
 const costumes = csvFileToObjectArray("data/costumes.csv");
 
+////////////// Generating Plan Elements //////////////
+
+function generateCostume(groupSize) {
+    const possibilities = [];
+
+    costumes.forEach((item) => {
+       if (item.min <= groupSize && item.max >= groupSize) {
+           possibilities.push(item);
+       }
+    });
+
+    const randomIndex = Math.floor(Math.random() * possibilities.length);
+    return possibilities[randomIndex];
+}
+
 ////////////// Planning API //////////////
 
 app.post('/api/plan', function (req,res) {
