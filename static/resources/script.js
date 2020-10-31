@@ -41,7 +41,7 @@ function submitForm() {
             data = JSON.parse(data);
 
             document.getElementById("costumeImg").setAttribute("src", data.costumeImg);
-            document.getElementById("costumeText").innerText = "Your costume should be " + data.costume;
+            document.getElementById("costumeText").innerText = data.costume + "!";
             document.getElementById("storyBlock").innerText = data.story;
 
             $("#plan").slideDown();
