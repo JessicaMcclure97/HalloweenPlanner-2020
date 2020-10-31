@@ -61,10 +61,19 @@
 
   <div id="plan" style="display: none;">
     <h1>Your Halloween</h1>
-    <h2>Costume</h2>
-    <h2>Plan</h2>
-    <h2>Story</h2>
-    <h2>Movie</h2>
+    <h2>Costume Inspiration</h2>
+    <div class="row">
+      <div class="col-md-4">
+        <img src="" alt="" id="costumeImg" role="presentation" />
+      </div>
+      <div class="col-md-8">
+        <p class="lead" id="costumeText"></p>
+      </div>
+    </div>
+    <h2>Spooky Story</h2>
+    <p id="storyBlock"></p>
+    <button class="btn btn-secondary btn-lg w-100 mt-3" id="regenerate">Generate another</button>
+    <a href="/" class="btn btn-secondary btn-lg w-100 mt-3">Start again</a>
   </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
