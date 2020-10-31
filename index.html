@@ -9,19 +9,49 @@
 </head>
 <body>
 <div class="container">
-  <h1>Halloween Party Planner</h1>
-  <form>
-  <div class="form-group">
-    <label for="exampleInputEmail1">Email address</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-  </div>
-  <div class="form-group">
-    <label for="exampleInputPassword1">Password</label>
-    <input type="password" class="form-control" id="exampleInputPassword1">
-  </div>
-  <button type="submit" class="btn btn-secondary">Submit</button>
-</form>
+  <h1>Generate your plan</h1>
+  <form action="api/plan" method="post">
+    <div class="form-group">
+      <label for="peopleCount">How many people are in your party?</label>
+      <input type="number" class="form-control" id="peopleCount" name="peopleCount" aria-describedby="emailHelp" min="1" max="6" value="1">
+    </div>
+    <div class="form-group">
+      <label>Enter everyone's names.</label>
+      <input type="text" class="form-control name-input" id="name0" name="name0" aria-label="Person 1's name">
+      <input type="text" class="form-control name-input" id="name1" name="name1" aria-label="Person 2's name">
+      <input type="text" class="form-control name-input" id="name2" name="name2" aria-label="Person 3's name">
+      <input type="text" class="form-control name-input" id="name3" name="name3" aria-label="Person 4's name">
+      <input type="text" class="form-control name-input" id="name4" name="name4" aria-label="Person 5's name">
+      <input type="text" class="form-control name-input" id="name5" name="name5" aria-label="Person 6's name">
+    </div>
+    <div class="form-group">
+      <label for="startTime">When does your party start?</label>
+      <input type="text" class="form-control" id="startTime" name="startTime">
+    </div>
+    <div class="form-group">
+      <label for="endTime">When will your party end?</label>
+      <input type="text" class="form-control" id="endTime" name="endTime">
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" value="" id="familyFriendly" name="familyFriendly" aria-describedby="familyFriendlyHelp">
+      <label class="form-check-label" for="familyFriendly">
+        Keep it family-friendly
+      </label>
+      <small id="familyFriendlyHelp" class="form-text text-muted">
+        We'll avoid including anything too scary if you tick this box.
+      </small>
+    </div>
+    <div class="form-check mt-3">
+      <input class="form-check-input" type="checkbox" value="" id="drinkingGames" name="drinkingGames" aria-describedby="drinkingGamesHelp">
+      <label class="form-check-label" for="drinkingGames">
+        Include drinking games
+      </label>
+      <small id="drinkingGamesHelp" class="form-text text-muted">
+        Tick this box to put party games involving alcohol in your plan.
+      </small>
+    </div>
+    <button type="submit" class="btn btn-secondary btn-lg w-100 mt-3">Plan My Halloween</button>
+  </form>
 </div>
 </body>
 </html>
