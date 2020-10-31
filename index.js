@@ -19,7 +19,7 @@ app.post('/api/login', async function (req,res) {
         res.send("Logged in with ID " + ssn.name);
     }
 });
-app.post('/HalloweenPlanner-2020/api/plan', function (req,res) {
+app.post('/api/plan', function (req,res) {
     let html = "good"; //validation
 
     console.log('post: ' + req.url);
@@ -77,6 +77,5 @@ function writeJSON(res){
 
     let data = JSON.stringify(obj);
     console.log(data);
-
     res.json(data);
 }
