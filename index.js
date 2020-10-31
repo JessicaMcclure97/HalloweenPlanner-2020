@@ -176,6 +176,10 @@ function randomStoryGenerator(peopleCount, randomName, randomName2, costume){
     var task = costume["task"];
     var location = costume["location"];
 
+    if(randomName2 === ""){
+        randomName2 = "Bob";
+    }
+
 
     var story = "Once upon a time there were " + peopleCount +" " + costumeDescription + ". One day they decided to go to "
         + location + ". They thought they were all alone, however "+ evilCharacter +" was looking in. " + evilCharacter +
