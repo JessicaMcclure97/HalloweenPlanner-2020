@@ -1,0 +1,31 @@
+body {
+  background-color: orange;
+}
+
+h1 {
+  font-family: 'Henny Penny', sans-serif;
+}
+
+h2, h3, h4, h5 {
+  font-family: 'Syne Mono', sans-serif;
+}
+
+.container {
+  padding-top: 10px;
+  background-color: #202020;
+  color: #f4f4f4;
+  min-height: 100vh;
+  border: 3px solid orange;
+  border-top: 0px;
+  border-bottom: 0px;
+}
+
+.text-muted {
+  color: #d6d6d6 !important;
+}
+
+.btn-primary, .btn-primary:visited {
+  background-color: orange;
+  border-color: #e09100;
+  color: #000;
+}
