@@ -41,11 +41,7 @@ app.post('/HalloweenPlanner-2020/api/plan', function (req,res) {
     })
 });
 
-app.get('/HalloweenPlanner-2020', function(req,res){
-    console.log("Get Form html");
-    res.sendFile('index.html', {root: __dirname });
-    res.end();
-});
+app.use(express.static('static'));
 
 app.listen(port, () => {
     console.log(`Example app listening at http://localhost:${port}`);
