@@ -57,32 +57,17 @@ function generateCostume(groupSize) {
 function generatePlan(data) {
     const plan = new Map();
 
-    plan.push("costume", generateCostume())
+    plan.set("costume", generateCostume())
+
+    return plan;
 }
 
 app.post('/api/plan', function (req,res) {
-    let formInputs = new Map();
-    let html = "good"; //validation
-
     console.log('post: ' + req.url);
     req.setEncoding('utf8');
     req.on('data', chunk => {
         console.log('Got a line of post data: ', chunk);
-        html = processForm( chunk, res ); //Server side validation
-    })
-
-    req.on('end', () => {
-        console.log('End of Data - sending reply');
-        if (html === "good"){
-            writeJSON(res, generatePlan(form));
-            res.end();
-        }else{
-            console.log("Unsuccessful Form");
-            //unsuccessful validation
-            res.writeHead(200, {'Content-Type': 'text/html'});
-            res.write(String(html));
-            res.end();
-        }
+        processForm( chunk, res ); //Server side validation
     })
 });
 
@@ -95,12 +80,12 @@ app.listen(port, () => {
 
 //validating form
 function processForm(chunk, res){
-    var objects = chunk.split("&");
+    let objects = chunk.split("&");
+    let valid = true;
+    let formInputs = new Map();
 
-    var valid = true;
-
-    for(var i = 0; i < objects.length; i++){ //-1 since submit button will always be there
-        var info = objects[i].split("=");
+    for(let i = 0; i < objects.length; i++){ //-1 since submit button will always be there
+        let info = objects[i].split("=");
         info[1] = info[1].replace(/[+]/g, ' ');
 
         //validating fields
@@ -113,11 +98,15 @@ function processForm(chunk, res){
     }
 
     if(peopleCount != noNames) valid = false;
-    if(!valid){
-        return "<script>alert(\"Cannot Process form. Please press the " +
-            "back button to return to the order form.\");</script>";
-    }else{
-        return "good";
+
+    if (valid) {
+        writeJSON(res, generatePlan(formInputs));
+        res.end();
+    } else {
+        console.log("Unsuccessful Form");
+        // unsuccessful validation
+        res.writeHead(400);
+        res.end();
     }
 }
 
